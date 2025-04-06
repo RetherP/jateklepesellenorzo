@@ -40,11 +40,17 @@ namespace BACKEND.Controllers
                     if (g.CurrentState[x][y] == "C") ++g.NumOfCoins;
                     g.CurrentState[x][y] = "█";
                 }
+                res.CurrentState = g.CurrentState;
+                res.NumOfCoins = g.NumOfCoins;
+                res.IsInPlay = g.IsInPlay;
                 return res;
 
             }
             else {
                 g.IsInPlay = false;
+                res.CurrentState = g.CurrentState;
+                res.NumOfCoins = g.NumOfCoins;
+                res.IsInPlay = g.IsInPlay;
                 return res;
             }
         }
