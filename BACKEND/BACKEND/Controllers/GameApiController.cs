@@ -15,7 +15,25 @@ namespace BACKEND.Controllers
             Tuple<int, int> currentLoc = CurrentLocation(g);
             if(currentLoc.Item1 != -1 && currentLoc.Item2 != -1)
             {
-                //some logic here
+                string[] tmp = moves.Split(',');
+                int x = currentLoc.Item1;
+                int y = currentLoc.Item2;
+                int i = 0;
+                while(i<tmp.Length && g.IsInPlay)
+                {
+                    if (tmp[i].ToUpper() == "F") --y;
+                    else if (tmp[i].ToUpper() == "L") ++y;
+                    else if (tmp[i].ToUpper() == "J") ++x;
+                    else if (tmp[i].ToUpper() == "B") --y;
+
+                    if (x < 0) x = 0;
+                    else if (x > 8) x = 8;
+                    if (y < 0) y = 0;
+                    else if (y > 8) y = 8;
+
+                    if (g.CurrentState[x, y] == '¤') g.IsInPlay = false;
+                        ++i;
+                }
             }
             return res;
         }
