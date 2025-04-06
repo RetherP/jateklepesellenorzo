@@ -6,10 +6,10 @@ namespace BACKEND.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class GameApiController
+    public class GameApiController : ControllerBase
     {
-        [HttpGet("{moves}")]
-        public Game ValidateMoves([FromBody] Game g, string moves)
+        [HttpPost("{moves}")]
+        public Game? ValidateMoves(string moves, [FromBody] Game g)
         {
             Game res = new Game();
             Tuple<int, int> currentLoc = CurrentLocation(g);
@@ -31,14 +31,14 @@ namespace BACKEND.Controllers
                     if (y < 0) y = 0;
                     else if (y > 8) y = 8;
 
-                    if (g.CurrentState[x, y] == '¤') g.IsInPlay = false;
+                    if (g.CurrentState[x][y] == "¤") g.IsInPlay = false;
                         ++i;
                 }
                 if (g.IsInPlay)
                 {
-                    g.CurrentState[currentLoc.Item1, currentLoc.Item2] = '-';
-                    if (g.CurrentState[x, y] == 'C') ++g.NumOfCoins;
-                    g.CurrentState[x, y] = '█';
+                    g.CurrentState[currentLoc.Item1][currentLoc.Item2] = "-";
+                    if (g.CurrentState[x][y] == "C") ++g.NumOfCoins;
+                    g.CurrentState[x][y] = "█";
                 }
                 return res;
 
@@ -51,11 +51,11 @@ namespace BACKEND.Controllers
         public Tuple<int,int> CurrentLocation(Game g)
         {
             Tuple<int, int> res = new Tuple<int, int>(-1,-1);
-            for (int i = 0; i < g.CurrentState.GetLength(0); i++)
+            for (int i = 0; i < g.CurrentState[0].Length; i++)
             {
-                for (int j = 0; j < g.CurrentState.GetLength(1); j++)
+                for (int j = 0; j < g.CurrentState[1].Length; j++)
                 {
-                    if (g.CurrentState[i,j] == '█')
+                    if (g.CurrentState[i][j] == "█")
                     {
                         return (new Tuple<int, int>(i, j));
                     }

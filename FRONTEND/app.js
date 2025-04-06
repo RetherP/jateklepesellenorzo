@@ -6,16 +6,16 @@ const gameState = {
         ['-', '-', '-', 'H', '-', '-', '-'],
         ['-', '-', 'C', '-', 'H', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-'],
-        ['▌', '-', 'H', '-', '-', '-', '-'],
+        ['█', '-', 'H', '-', '-', '-', '-'],
         ['-', 'H', 'H', '-', '-', '-', '-'],
         ['-', 'H', 'H', 'H', '-', '-', '-'],
         ['-', '-', 'H', '-', '-', '-', '-'],
         ['-', '-', '-', '-', '-', '-', '-']
     ],
-    isInPlay: true,
-    numOfCoins: 0
+    numOfCoins: 0,
+    isInPlay: true
 };
-fetch('http://localhost:5146/GameApi/F,L,J', {
+fetch('http://localhost:5146/gameapi/F,J,F', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -23,13 +23,5 @@ fetch('http://localhost:5146/GameApi/F,L,J', {
     body: JSON.stringify(gameState)
 })
 .then(response => {
-    if (!response.ok) throw new Error("Request failed");
-    return response.json();
+    console.log("Response: ", response)
 })
-.then(updatedGame => {
-    console.log("Game updated:", updatedGame);
-    // you can now update the UI with updatedGame
-})
-.catch(error => {
-    console.error("Error during move validation:", error);
-});

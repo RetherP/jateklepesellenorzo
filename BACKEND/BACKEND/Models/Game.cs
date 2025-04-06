@@ -2,7 +2,7 @@
 {
     public class Game
     {
-        public char[,]? CurrentState { get; set; }
+        public string[][] CurrentState { get; set; }
         public int? NumOfCoins { get; set; }
         public bool IsInPlay { get; set; }
     }
