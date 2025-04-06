@@ -16,29 +16,30 @@ namespace BACKEND.Controllers
             if(currentLoc.Item1 != -1 && currentLoc.Item2 != -1)
             {
                 string[] tmp = moves.Split(',');
-                int x = currentLoc.Item1;
-                int y = currentLoc.Item2;
+                int x = currentLoc.Item2;
+                int y = currentLoc.Item1;
                 int i = 0;
                 while(i<tmp.Length && g.IsInPlay)
                 {
-                    if (tmp[i].ToUpper() == "F") --y;
-                    else if (tmp[i].ToUpper() == "L") ++y;
-                    else if (tmp[i].ToUpper() == "J") ++x;
+                    if (tmp[i].ToUpper() == "F") --x;
+                    else if (tmp[i].ToUpper() == "L") ++x;
+                    else if (tmp[i].ToUpper() == "J") ++y;
                     else if (tmp[i].ToUpper() == "B") --y;
 
                     if (x < 0) x = 0;
                     else if (x > 8) x = 8;
                     if (y < 0) y = 0;
                     else if (y > 8) y = 8;
-
-                    if (g.CurrentState[x][y] == "¤") g.IsInPlay = false;
+                    ;
+                    Console.WriteLine($"Current Char: {g.CurrentState[x][y]}, Post:[{x},{y}]");
+                    if (g.CurrentState[x][y] == "B") g.IsInPlay = false;
                         ++i;
                 }
                 if (g.IsInPlay)
                 {
-                    g.CurrentState[currentLoc.Item1][currentLoc.Item2] = "-";
+                    g.CurrentState[currentLoc.Item2][currentLoc.Item1] = "-";
                     if (g.CurrentState[x][y] == "C") ++g.NumOfCoins;
-                    g.CurrentState[x][y] = "█";
+                    g.CurrentState[x][y] = "P";
                 }
                 res.CurrentState = g.CurrentState;
                 res.NumOfCoins = g.NumOfCoins;
@@ -61,9 +62,9 @@ namespace BACKEND.Controllers
             {
                 for (int j = 0; j < g.CurrentState[1].Length; j++)
                 {
-                    if (g.CurrentState[i][j] == "█")
+                    if (g.CurrentState[i][j] == "P")
                     {
-                        return (new Tuple<int, int>(i, j));
+                        return (new Tuple<int, int>(j, i));
                     }
                 }
             }
