@@ -34,8 +34,19 @@ namespace BACKEND.Controllers
                     if (g.CurrentState[x, y] == '¤') g.IsInPlay = false;
                         ++i;
                 }
+                if (g.IsInPlay)
+                {
+                    g.CurrentState[currentLoc.Item1, currentLoc.Item2] = '-';
+                    if (g.CurrentState[x, y] == 'C') ++g.NumOfCoins;
+                    g.CurrentState[x, y] = '█';
+                }
+                return res;
+
             }
-            return res;
+            else {
+                g.IsInPlay = false;
+                return res;
+            }
         }
         public Tuple<int,int> CurrentLocation(Game g)
         {
