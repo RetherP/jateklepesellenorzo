@@ -1,4 +1,3 @@
-
 const gameState = {
     currentState: [
         ['-', '-', '-', '-', '-', '-', '-'],
@@ -20,8 +19,18 @@ fetch('http://localhost:5146/gameapi/F,F,J', {
     },
     body: JSON.stringify(gameState)
 })
-.then(response => {
-    //console.log("Response: ", response)
-    let resp = response.json()
-    console.log(resp)
-})
+.then(response => {DrawOutFromResp(response)})
+
+async function DrawOutFromResp(answ){
+    let grid = document.querySelector('#grid')
+    let inpt = await answ.json()
+    for (let i = 0; i < inpt.currentState.length; i++) {
+        let tr = document.createElement('tr')
+        for (let j = 0; j < inpt.currentState[i].length; j++) {
+            let td = document.createElement('td')
+            td.textContent = inpt.currentState[i][j]
+            tr.appendChild(td)
+        }
+        grid.appendChild(tr)
+    }
+}
