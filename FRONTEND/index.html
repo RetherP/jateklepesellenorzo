@@ -13,10 +13,10 @@
         <table class="table align-middle table-bordered">
             <tbody id="grid"></tbody>
         </table>
-        <input style="width: 652px;" type="text" name="UserMoves" id="UserMoves" placeholder="Kérem írja be a lépésit vesszővel elválasztva pl.:F,B,J,L(Fel,Balra,Jobbra,Le)">
-        <br>
-        <br>
-        <button onclick="SubmitMoves()">Lépések validálása</button>
+        <div class="input-group">
+            <input class="form-control"  type="text" rows="2" name="UserMoves" id="UserMoves" placeholder="Kérem írja be a lépésit vesszővel elválasztva pl.:F,B,J,L(Fel,Balra,Jobbra,Le)">
+            <button class="btn btn-success" onclick="SubmitMoves()">Lépések validálása</button>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
