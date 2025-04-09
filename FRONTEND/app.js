@@ -25,14 +25,23 @@ async function DrawOutFromResp(answ){
         let tr = document.createElement('tr')
         for (let j = 0; j < inpt.currentState[i].length; j++) {
             let td = document.createElement('td')
-            if(inpt.currentState[i][j] === "B"){
-                td.classList.add("icon_bomb")
+            if(gameState.currentState[i][j] === "B"){
+                let img = document.createElement('img')
+                img.classList.add('icon_img')
+                img.src= "/pics/bomb_icon.png"
+                td.appendChild(img)
             }
-            else if(inpt.currentState[i][j] === "C"){
-                td.classList.add("icon_coin")
+            else if(gameState.currentState[i][j] === "C"){
+                let img = document.createElement('img')
+                img.classList.add('icon_img')
+                img.src= "/pics/coin.png"
+                td.appendChild(img)
             }
-            else if(inpt.currentState[i][j] === "P"){
-                td.classList.add("icon_player")
+            else if(gameState.currentState[i][j] === "P"){
+                let img = document.createElement('img')
+                img.classList.add('icon_img')
+                img.src= "/pics/main_character.png"
+                td.appendChild(img)
             }
             tr.appendChild(td)
         }
@@ -41,8 +50,10 @@ async function DrawOutFromResp(answ){
     else{
         let body = document.querySelector('#body')
         body.innerHTML = ''
+        let br = document.createElement('br')
         let img = document.createElement('img')
         img.src = "/pics/bomb.png"
+        img.classList.add("loser_bomb")
         body.appendChild(img)
     }
 }
@@ -52,13 +63,22 @@ function FirstDrawout(){
         for (let j = 0; j < gameState.currentState[i].length; j++) {
             let td = document.createElement('td')
             if(gameState.currentState[i][j] === "B"){
-                td.classList.add("icon_bomb")
+                let img = document.createElement('img')
+                img.classList.add('icon_img')
+                img.src= "/pics/bomb_icon.png"
+                td.appendChild(img)
             }
             else if(gameState.currentState[i][j] === "C"){
-                td.classList.add("icon_coin")
+                let img = document.createElement('img')
+                img.classList.add('icon_img')
+                img.src= "/pics/coin.png"
+                td.appendChild(img)
             }
             else if(gameState.currentState[i][j] === "P"){
-                td.classList.add("icon_player")
+                let img = document.createElement('img')
+                img.classList.add('icon_img')
+                img.src= "/pics/main_character.png"
+                td.appendChild(img)
             }
             tr.appendChild(td)
         }
