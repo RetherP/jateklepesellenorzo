@@ -48,9 +48,9 @@ async function DrawOutFromResp(answ){
         grid.appendChild(tr)
     }}
     else{
+        console.log(inpt.isInPlay)
         let body = document.querySelector('#body')
         body.innerHTML = ''
-        let br = document.createElement('br')
         let img = document.createElement('img')
         img.src = "/pics/bomb.png"
         img.classList.add("loser_bomb")
@@ -105,7 +105,6 @@ function SubmitMoves(){
 function IsInputValid(inpt){
     let splitted = inpt.toLowerCase().split(',')
     for (let i = 0; i < splitted.length; i++) {
-        console.log(splitted[i])
         if(!(splitted[i] === "f" || splitted[i] === "j" || splitted[i] === "b" || splitted[i] === "l")){
             return false
         }        

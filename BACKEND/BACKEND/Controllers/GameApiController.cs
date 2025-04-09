@@ -29,9 +29,9 @@ namespace BACKEND.Controllers
                     else if (tmp[i].ToUpper() == "B") --x;
 
                     if (x < 0) x = 0;
-                    else if (x > 8) x = 8;
+                    else if (x >= 6) x = 6;
                     if (y < 0) y = 0;
-                    else if (y > 8) y = 8;
+                    else if (y > 7) y = 7;
 
                     if (g.CurrentState[y][x] == "B") g.IsInPlay = false;
                         ++i;
@@ -59,7 +59,7 @@ namespace BACKEND.Controllers
         public Tuple<int,int> CurrentLocation(Game g)
         {
             Tuple<int, int> res = new Tuple<int, int>(-1,-1);
-            for (int i = 0; i < g.CurrentState[0].Length; i++)
+            for (int i = 0; i <= g.CurrentState[0].Length; i++)
             {
                 for (int j = 0; j < g.CurrentState[1].Length; j++)
                 {
