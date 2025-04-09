@@ -52,12 +52,27 @@ function FirstDrawout(){
 
 function SubmitMoves(){
     let userMoves= document.querySelector('#UserMoves').value
-    fetch('http://localhost:5146/gameapi/' + userMoves, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(gameState)
-    })
-    .then(response => {DrawOutFromResp(response)})
+    if(IsInputValid(userMoves) === true){
+        fetch('http://localhost:5146/gameapi/' + userMoves, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gameState)
+        })
+        .then(response => {DrawOutFromResp(response)})
+    }
+    else {
+        alert("Helytelen bemenet kérem adja meg bemeneti formátumnak megfelelően a lépéseket.")
+    }
+}
+function IsInputValid(inpt){
+    let splitted = inpt.toLowerCase().split(',')
+    for (let i = 0; i < splitted.length; i++) {
+        console.log(splitted[i])
+        if(!(splitted[i] === "f" || splitted[i] === "j" || splitted[i] === "b" || splitted[i] === "l")){
+            return false
+        }        
+    }
+    return true
 }
