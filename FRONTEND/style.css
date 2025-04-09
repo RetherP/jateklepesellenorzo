@@ -1,7 +1,19 @@
 table{
     padding: 4px;
+    background-color: aliceblue;
 }
 td{
     padding: 6px;
     width: 5%;
+}
+.main{
+    background-color: lightgrey;
+    margin: auto;
+    width: 85%;
+
+}
+#body{
+    background-color: lightgrey;
+    width: 40%;
+    margin: auto;
 }

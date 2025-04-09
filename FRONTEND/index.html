@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,16 @@
     <title>Játéklépés ellenőrző</title>
 </head>
 <body onload="FirstDrawout()" id="body">
-    <table>
-        <tbody id="grid"></tbody>
-    </table>
-    <input style="width: 600px;" type="text" name="UserMoves" id="UserMoves" placeholder="Kérem írja be a lépésit vesszővel elválasztva pl.:F,B,J,L(Fel,Balra,Jobbra,Le)">
-    <br>
-    <button onclick="SubmitMoves()">Lépések validálása</button>
+    <br><br><br>
+    <div class="main">
+        <table class="table">
+            <tbody id="grid"></tbody>
+        </table>
+        <input style="width: 652px;" type="text" name="UserMoves" id="UserMoves" placeholder="Kérem írja be a lépésit vesszővel elválasztva pl.:F,B,J,L(Fel,Balra,Jobbra,Le)">
+        <br>
+        <br>
+        <button onclick="SubmitMoves()">Lépések validálása</button>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
