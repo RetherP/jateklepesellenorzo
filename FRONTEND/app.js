@@ -12,14 +12,6 @@ let gameState = {
     numOfCoins: 0,
     isInPlay: true
 };
-// fetch('http://localhost:5146/gameapi/F,F,J', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(gameState)
-// })
-// .then(response => {DrawOutFromResp(response)})
 
 async function DrawOutFromResp(answ){
     let grid = document.querySelector('#grid')
@@ -48,4 +40,16 @@ function FirstDrawout(){
         }
         grid.appendChild(tr)
     }
+}
+
+function SubmitMoves(){
+    let userMoves= document.querySelector('#UserMoves').value
+    fetch('http://localhost:5146/gameapi/' + userMoves, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(gameState)
+    })
+    .then(response => {DrawOutFromResp(response)})
 }
