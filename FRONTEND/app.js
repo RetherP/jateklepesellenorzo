@@ -1,4 +1,4 @@
-const gameState = {
+let gameState = {
     currentState: [
         ['-', '-', '-', '-', '-', '-', '-'],
         ['-', '-', '-', 'C', '-', '-', '-'],
@@ -23,7 +23,11 @@ fetch('http://localhost:5146/gameapi/F,F,J', {
 
 async function DrawOutFromResp(answ){
     let grid = document.querySelector('#grid')
+    grid.innerHTML = ''
     let inpt = await answ.json()
+    gameState.currentState = inpt.currentState
+    gameState.isInPlay = inpt.isInPlay
+    gameState.numOfCoins = inpt.numOfCoins
     for (let i = 0; i < inpt.currentState.length; i++) {
         let tr = document.createElement('tr')
         for (let j = 0; j < inpt.currentState[i].length; j++) {
