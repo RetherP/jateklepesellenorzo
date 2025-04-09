@@ -25,7 +25,15 @@ async function DrawOutFromResp(answ){
         let tr = document.createElement('tr')
         for (let j = 0; j < inpt.currentState[i].length; j++) {
             let td = document.createElement('td')
-            td.textContent = inpt.currentState[i][j]
+            if(inpt.currentState[i][j] === "B"){
+                td.classList.add("icon_bomb")
+            }
+            else if(inpt.currentState[i][j] === "C"){
+                td.classList.add("icon_coin")
+            }
+            else if(inpt.currentState[i][j] === "P"){
+                td.classList.add("icon_player")
+            }
             tr.appendChild(td)
         }
         grid.appendChild(tr)
@@ -43,7 +51,15 @@ function FirstDrawout(){
         let tr = document.createElement('tr')
         for (let j = 0; j < gameState.currentState[i].length; j++) {
             let td = document.createElement('td')
-            td.textContent = gameState.currentState[i][j]
+            if(gameState.currentState[i][j] === "B"){
+                td.classList.add("icon_bomb")
+            }
+            else if(gameState.currentState[i][j] === "C"){
+                td.classList.add("icon_coin")
+            }
+            else if(gameState.currentState[i][j] === "P"){
+                td.classList.add("icon_player")
+            }
             tr.appendChild(td)
         }
         grid.appendChild(tr)

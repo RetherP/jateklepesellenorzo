@@ -4,6 +4,24 @@
     width: 95%;
 
 }
+.icon_bomb{
+    background-image: url(/pics/bomb_icon.png);
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon_coin{
+    background-image: url(/pics/coin.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon_player{
+    background-image: url(/pics/main_character.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 #body{
     background-color: lightgrey;
     width: 40%;
@@ -18,4 +36,5 @@ td{
     width: 5%;
     text-align: center;
     height: 100px;
+    border: 1px solid black;
 }
