@@ -20,6 +20,7 @@ async function DrawOutFromResp(answ){
     gameState.currentState = inpt.currentState
     gameState.isInPlay = inpt.isInPlay
     gameState.numOfCoins = inpt.numOfCoins
+    if(inpt.isInPlay === true){
     for (let i = 0; i < inpt.currentState.length; i++) {
         let tr = document.createElement('tr')
         for (let j = 0; j < inpt.currentState[i].length; j++) {
@@ -28,6 +29,13 @@ async function DrawOutFromResp(answ){
             tr.appendChild(td)
         }
         grid.appendChild(tr)
+    }}
+    else{
+        let body = document.querySelector('#body')
+        body.innerHTML = ''
+        let img = document.createElement('img')
+        img.src = "/pics/bomb.png"
+        body.appendChild(img)
     }
 }
 function FirstDrawout(){
