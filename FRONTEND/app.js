@@ -12,7 +12,8 @@ let gameState = {
     numOfCoins: 0,
     isInPlay: true
 };
-
+document.querySelector("#UserMoves").hidden = true
+document.querySelector("#UserMovesBtn").hidden = true
 async function DrawOutFromResp(answ){
     let grid = document.querySelector('#grid')
     grid.innerHTML = ''
@@ -58,6 +59,9 @@ async function DrawOutFromResp(answ){
     }
 }
 function FirstDrawout(){
+    let text = document.querySelector('#userIn').value;
+    const charArray2D = text.trim().split('\n').map(line => line.trim().split(' '))
+    gameState.currentState = charArray2D
     for (let i = 0; i < gameState.currentState.length; i++) {
         let tr = document.createElement('tr')
         for (let j = 0; j < gameState.currentState[i].length; j++) {
@@ -84,6 +88,11 @@ function FirstDrawout(){
         }
         grid.appendChild(tr)
     }
+    document.querySelector("#UserMoves").hidden = false
+    document.querySelector("#UserMovesBtn").hidden = false
+    document.querySelector("#userIn").hidden = true
+    document.querySelector("#userInBtn").hidden = true
+       
 }
 
 function SubmitMoves(){

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Játéklépés ellenőrző</title>
 </head>
-<body onload="FirstDrawout()" id="body">
+<body onload="" id="body">
     <br><br><br>
     <div class="main">
         <table class="table align-middle ">
@@ -15,7 +15,21 @@
         </table>
         <div class="input-group">
             <input class="form-control"  type="text" rows="2" name="UserMoves" id="UserMoves" placeholder="Kérem írja be a lépésit vesszővel elválasztva pl.:F,B,J,L(Fel,Balra,Jobbra,Le)">
-            <button class="btn btn-success" onclick="SubmitMoves()">Lépések validálása</button>
+            <button id="UserMovesBtn" class="btn btn-success" onclick="SubmitMoves()">Lépések validálása</button>
+            <textarea name="userIn" id="userIn" rows="10"></textarea>
+            <button id="userInBtn"class="btn btn-success" onclick="FirstDrawout()">Játéktér Felépítése</button>
+            <label for="userIn">
+                Minta játéktér: <br>
+                - - - - - - -  <br>
+                - - - C - - -  <br>
+                - - - B B - -  <br>
+                - - C - B - -  <br>
+                P B B - - - -  <br>
+                B B B B - - -  <br>
+                B B B B - - -  <br>
+                - - - - - - - <br>
+                A '-' karakter az üres mező, a 'C' karakter a coin, a 'P' a player, a 'B' a bomba karakter
+            </label>
         </div>
     </div>
     <script src="app.js"></script>
