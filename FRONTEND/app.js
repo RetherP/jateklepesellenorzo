@@ -14,6 +14,7 @@ let gameState = {
 };
 document.querySelector("#UserMoves").hidden = true
 document.querySelector("#UserMovesBtn").hidden = true
+document.querySelector("#NumOfCoins").hidden = true
 async function DrawOutFromResp(answ){
     let grid = document.querySelector('#grid')
     grid.innerHTML = ''
@@ -21,6 +22,7 @@ async function DrawOutFromResp(answ){
     gameState.currentState = inpt.currentState
     gameState.isInPlay = inpt.isInPlay
     gameState.numOfCoins = inpt.numOfCoins
+    document.querySelector("#NumOfCoins").innerHTML = "A felvett érmék száma: "+gameState.numOfCoins
     if(inpt.isInPlay === true){
     for (let i = 0; i < inpt.currentState.length; i++) {
         let tr = document.createElement('tr')
@@ -91,8 +93,10 @@ function FirstDrawout(){
         }
         document.querySelector("#UserMoves").hidden = false
         document.querySelector("#UserMovesBtn").hidden = false
+        document.querySelector("#NumOfCoins").hidden = false
         document.querySelector("#userIn").hidden = true
         document.querySelector("#userInBtn").hidden = true
+        document.querySelector("#UserInLabel").hidden = true
     }
     else{
         alert("The Input array is invalid, there is an invalid character and/or the lenght of the lines are inconsistent.\n" 

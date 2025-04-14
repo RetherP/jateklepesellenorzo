@@ -38,3 +38,8 @@ td{
 #userIn{
     width: 100%;
 }
+#NumOfCoins{
+    font-weight: bold;
+    width: 100%;
+    font-size: 20px;
+}

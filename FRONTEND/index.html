@@ -18,7 +18,7 @@
             <button id="UserMovesBtn" class="btn btn-success" onclick="SubmitMoves()">Lépések validálása</button>
             <textarea name="userIn" id="userIn" rows="10"></textarea>
             <button id="userInBtn"class="btn btn-success" onclick="FirstDrawout()">Játéktér Felépítése</button>
-            <label for="userIn">
+            <label for="userIn" id="UserInLabel">
                 Minta játéktér: <br>
                 - - - - - - -  <br>
                 - - - C - - -  <br>
@@ -30,6 +30,7 @@
                 - - - - - - - <br>
                 A '-' karakter az üres mező, a 'C' karakter a coin, a 'P' a player, a 'B' a bomba karakter
             </label>
+            <p id="NumOfCoins"></p>
         </div>
     </div>
     <script src="app.js"></script>
