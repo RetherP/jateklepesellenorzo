@@ -61,37 +61,43 @@ async function DrawOutFromResp(answ){
 function FirstDrawout(){
     let text = document.querySelector('#userIn').value;
     const charArray2D = text.trim().split('\n').map(line => line.trim().split(' '))
-    gameState.currentState = charArray2D
-    for (let i = 0; i < gameState.currentState.length; i++) {
-        let tr = document.createElement('tr')
-        for (let j = 0; j < gameState.currentState[i].length; j++) {
-            let td = document.createElement('td')
-            if(gameState.currentState[i][j] === "B"){
-                let img = document.createElement('img')
-                img.classList.add('icon_img')
-                img.src= "/pics/bomb_icon.png"
-                td.appendChild(img)
+    if(UserSideGridValidation(charArray2D)){
+        gameState.currentState = charArray2D
+        for (let i = 0; i < gameState.currentState.length; i++) {
+            let tr = document.createElement('tr')
+            for (let j = 0; j < gameState.currentState[i].length; j++) {
+                let td = document.createElement('td')
+                if(gameState.currentState[i][j] === "B"){
+                    let img = document.createElement('img')
+                    img.classList.add('icon_img')
+                    img.src= "/pics/bomb_icon.png"
+                    td.appendChild(img)
+                }
+                else if(gameState.currentState[i][j] === "C"){
+                    let img = document.createElement('img')
+                    img.classList.add('icon_img')
+                    img.src= "/pics/coin.png"
+                    td.appendChild(img)
+                }
+                else if(gameState.currentState[i][j] === "P"){
+                    let img = document.createElement('img')
+                    img.classList.add('icon_img')
+                    img.src= "/pics/main_character.png"
+                    td.appendChild(img)
+                }
+                tr.appendChild(td)
             }
-            else if(gameState.currentState[i][j] === "C"){
-                let img = document.createElement('img')
-                img.classList.add('icon_img')
-                img.src= "/pics/coin.png"
-                td.appendChild(img)
-            }
-            else if(gameState.currentState[i][j] === "P"){
-                let img = document.createElement('img')
-                img.classList.add('icon_img')
-                img.src= "/pics/main_character.png"
-                td.appendChild(img)
-            }
-            tr.appendChild(td)
+            grid.appendChild(tr)
         }
-        grid.appendChild(tr)
+        document.querySelector("#UserMoves").hidden = false
+        document.querySelector("#UserMovesBtn").hidden = false
+        document.querySelector("#userIn").hidden = true
+        document.querySelector("#userInBtn").hidden = true
     }
-    document.querySelector("#UserMoves").hidden = false
-    document.querySelector("#UserMovesBtn").hidden = false
-    document.querySelector("#userIn").hidden = true
-    document.querySelector("#userInBtn").hidden = true
+    else{
+        alert("The Input array is invalid, there is an invalid character and/or the lenght of the lines are inconsistent.\n" 
+        +"Make sure there are no empty spaces in the end of the lines")
+    }
        
 }
 
@@ -120,3 +126,23 @@ function IsInputValid(inpt){
     }
     return true
 }
+function UserSideGridValidation(grid){
+    if (!Array.isArray(grid)) {
+        return false
+    }
+    const allowedChars = new Set(['B', 'P', 'C', '-']);
+    const rowLength = grid[0].length;
+
+    for (let i = 0; i < grid.length; i++) {
+        const row = grid[i];
+        if (row.length !== rowLength) {
+            return false
+        }
+        for (let j = 0; j < row.length; j++) {
+            if (!allowedChars.has(row[j])) {
+                return false
+            }
+        }
+    }
+  return true 
+}   
