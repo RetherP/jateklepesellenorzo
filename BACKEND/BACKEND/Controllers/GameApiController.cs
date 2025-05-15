@@ -29,9 +29,9 @@ namespace BACKEND.Controllers
                     else if (tmp[i].ToUpper() == "B") --x;
 
                     if (x < 0) x = 0;
-                    else if (x >= 6) x = 6;
+                    else if (x >= g.CurrentState[0].Length-1) x = g.CurrentState[0].Length - 1;
                     if (y < 0) y = 0;
-                    else if (y > 7) y = 7;
+                    else if (y >= g.CurrentState.Length-1) y = g.CurrentState.Length - 1;
 
                     if (g.CurrentState[y][x] == "B") g.IsInPlay = false;
                         ++i;
